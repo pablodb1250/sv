@@ -1,0 +1,163 @@
+/*
+Notas->
+'|->' significa presionar la tecla ENTER.
+'+++' => es una nota a tener en cuenta.
+'>' => escribir en la consola.
+En la consola de windows hay que activar el autocompletado de Archivos o Carpetas de la siguiente manera
+> cmd /f '|->'
+y para utilizarlo escribimos las primeras letras del archivo o carpeta y presionamos la tecla 'CTRL'+'D' para las Carpetas
+y 'CTRL'+'F' para los archivos.
+
+
+
+Instalacion de NodeJS:
+
+http://nodejs.org
+descargar el archivo que nos propone el sitio respecto de nuestro sistema operativo, en mi caso 'node-v5.4.1-x64.msi' para mi windows 8.
+ejecutar => next|aceptar los terminos|next|install|finish ;)
+Instaló por defecto en C:\Program Files\nodejs (claro que se puede cambiar este path en el momento de instalación)
+
+Esta versión de nodejs ya trae incorporado npm.
+
+para verificar si esta instalado iniciar la consola y escribir:
+node -v
+presionamos enter y nos tiene que mostrar ->
+v5.4.1
++++ si tenias abierta la consola durante la instalación de node, tendrás que reiniciarla para poder verificar si se instalo nodejs.
+
+y para verificar que versión de npm nos instaló, hacemos lo mismo que con node:
+npm -v '|->'
+y nos muestra la versión:
+3.3.2
+
+Pasos para instalar "EXPRESS"
+
+Primero crear una carpeta donde vamos a generar nuestro proyecto.
+> mkdir 'nuestraCarpetaDeProyecto' '|>'
++++ previamente deberiamos posicionarnos en path en donde queremos crear esa carpta
++++ con > cd\ '|->' //para ir a la raiz de nuestro disco
++++ > cd xampp\htdocs\proyectos '|->' //en mi caso utilizare este path
++++ > mkdir proyecto_node_express_angular '|->'
+Procedemos a instalar "Express"
+> npm install -g express  '|->' +++ Para que funcione en windows hay que hacer
++++ el valor '-g' es para que se instale de forma global
+> npm install -g express-generator +++ sino no podes crear un proyecto express
++++ y te da un error '"express" no se reconoce como un comando interno o externo'
+En windows me instala en C:\Users\pablo\AppData\Roaming\npm\node_modules\express
+Ahora para crear el proyecto en "Express"
+> express EL_NOMBRE_DE_TU_PROYECTO '|->'
++++ si solo escribes > express
++++ te genera el proyecto en la carpeta actual
+
+   create : .
+   create : ./package.json
+   create : ./app.js
+   create : ./public
+   create : ./public/images
+   create : ./public/javascripts
+   create : ./public/stylesheets
+   create : ./public/stylesheets/style.css
+   create : ./routes
+   create : ./routes/index.js
+   create : ./routes/user.js
+   create : ./views
+   create : ./views/layout.jade
+   create : ./views/index.jade
+
+   install dependencies:
+     > cd . && npm install
+
+   run the app:
+     > SET DEBUG=proyecto_node_express_angular:* & npm start
+
+En ese caso lo proximo a realizar es instalar las dependencias
+en la consola te propone:
+ install dependencies:
+> cd . && npm instal +++ ingresa a la carpeta donde instalo el proyecto
+e instala las dependencias
+
+Y tambien propone:
+ SET DEBUG=proyecto_node_express_angular:* & npm start
++++ Inicia node y se puede ver desde localhost:3000
+
+tambien se puede lanzar el servidor:
+> node ./bin/www '|.>'
+
++++ Importante: cada vez que se realiza un cambio en el proyecto
++++ tenemos que reiniciar el servidor para que se vean reflejados
++++ los cambios.
+
+
+Instalamos hotnode que es un plugin que escucha cuando se realizan cambios en el proyecto y
+reinicia automaticamente el servidor
+
+> npm install -g hotnode '|->'
+
+y la manera de lanzarlo es
+> hotnode bin/www '|->'
+
+Modificacion de package.json
++++ Este archivo contiene la configuracion de la aplicacion y ademas las dependencias que se deben instalar con 'npm install'
+Vamos a quitar algunas de ellas como "jade" etc
+y agregaremos otras como :
+
+    "express-handlebars": "latest",
+    "lodash": "latest",
+    "nib": "latest",
+    "stylus": "latest"
+
++++ "latest" significa que va a instalar la última version
+Tambien creamos "devDependencies" para especificar dependencias para el desarrollo
+
+  "devDependencies": {
+    "bower": "latest",
+    "grunt": "latest"
+  }
+
+Archivos que se agregan a la raíz del proyecto:
+
+
+".bowerrc" +++ es la configuracion para el directorio donde se encuentra la devDependencies:Bower
++++ Bower es un gestor de paquetes que facilita la busqueda, instalación y actualización de los mismos
++++ como por ejemplo "font-awesome", "normalize-css", "angular", etc.
++++ en la configuracion "bower.json" se especifican las versiones que debe descargar pudiendo aclarar
+
+Versión semver      "1.2.3"
+rango de versiones  "1.2"
+                    "~1.2.3"
+                    "^1.2.3"
+                    ">=1.2.3 <2.0"
+Última Versión      "*"
+                    "latest"
+
+
+".editorConfig" => es la configuracion para que sublime text trabaje con estas config
++++ hay que instalar el plugin "editorconfig" para que acepte este archivo de configuracion
+".gitignore" => es el archivo que hace que se ignoren los archivos descritos cuando se sube el proyecto a github
+".jscsrc" => es la configuracion para validacion de la escritura de javascript.
+".jshintrc" => configuración para validar el estilo de programación.
+"bower.json" => configuración de bower para nuestra aplicación y sus dependencias
+
+
+> npm install -g bower
+> bower install
+
+Modificamos el archivo app.js basicamente quitamos la referencia a jade y agregamos handlebars
+Agregamos al ppio del archivo 'use strict'; y esto debemos hacerlo en todos los archibos js
+por ultimo ingresamos Comentarios y acomodamos el arch para que se entienda un poco mas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
